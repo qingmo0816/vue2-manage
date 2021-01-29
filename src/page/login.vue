@@ -54,7 +54,7 @@ export default {
               type: "success",
               message: res.success,
             });
-            this.$router.push({ name: "home" });
+            this.$router.push({ path: '/manage'});
           }
         }
       });
@@ -96,6 +96,4 @@ export default {
     }
   }
 }
-</style>
-<style>
 </style>

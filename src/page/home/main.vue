@@ -21,17 +21,15 @@
           <el-col :span="4" class="commen color"> <span class="number">{{adminCount}}</span> 管理员</el-col>
         </el-row>
       </el-row>
-      <main-echarts :pieData = pieData></main-echarts>
     </el-main>
   </el-container>
 </template>
 
 <script>
-import {userCount,orderCount,getUserCount,getOrderCount,adminDayCount,adminCount,getUserCity} from "../../api/getData";
+import {userCount,orderCount,getUserCount,getOrderCount,adminDayCount,adminCount} from "../../api/getData";
 export default {
   data() {
     return {
-      pieData: {},
       userCount: null,
       orderCount: null,
       getUserCount: null,
@@ -42,7 +40,6 @@ export default {
   },
   created() {
     this.initData();
-    this.initDatas()
   },
   methods: {
     async initData() {
@@ -72,18 +69,6 @@ export default {
       var currentdate = year + seperator1 + month + seperator1 + strDate;
       return currentdate;
     },
-    async initDatas(){
-    			try{
-    				const res = await getUserCity();
-    				if (res.status == 1) {
-    					this.pieData = res.user_city;
-    				}else{
-    					throw new Error(res)
-    				}
-    			}catch(err){
-    				console.log('获取用户分布信息失败',err);
-    			}
-    		},
   },
 };
 </script>
